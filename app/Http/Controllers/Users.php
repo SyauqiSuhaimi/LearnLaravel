@@ -8,6 +8,7 @@ class Users extends Controller
 {
     public function index($name)
     {
-        return view("user", ['name' => $name]); 
+        $data = ['mr', 'ram', 'but'];
+        return view("user", ['name' => $name], ['users' => $data]); 
     }
 }

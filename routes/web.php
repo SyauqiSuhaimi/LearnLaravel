@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,6 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::view("url",'about');
+Route::get("url", [UserController::class, 'viewLoad']);
 
-Route::get("Users/{name}", [Users::class, 'index']);
+Route::get("user/{name}", [Users::class, 'index']);
