@@ -4,3 +4,5 @@
 <a href="/user/me">User Me</a>
 
 @include('innerAbout')
+
+@include('footer')

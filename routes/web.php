@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormControl;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::get('/welcome', function () {
 Route::get("url", [UserController::class, 'viewLoad']);
 
 Route::get("user/{name}", [Users::class, 'index']);
+
+Route::post("submit", [FormControl::class, 'getData']);
+
+Route::view("/form","form");
