@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FormControl;
+use App\Http\Controllers\databaseController;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\HttpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +33,16 @@ Route::get("user/{name}", [Users::class, 'index']);
 
 Route::post("submit", [FormControl::class, 'getData']);
 
-Route::view("/form","form");
+Route::view("/noaccess","noaccess");
+
+Route::group(['middleware' => ['protected']], function()
+{
+    Route::view("/form","form");
+});
+
+Route::get("db", [databaseController::class, 'index']);
+Route::get("api", [ApiController::class, 'index']);
+
+Route::view("/http","http");
+
+Route::put("httpreq", [HttpController::class,'testRequest']);
