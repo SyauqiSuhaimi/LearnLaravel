@@ -7,6 +7,9 @@ use App\Http\Controllers\FormControl;
 use App\Http\Controllers\databaseController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\HttpController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\ListController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +49,14 @@ Route::get("api", [ApiController::class, 'index']);
 Route::view("/http","http");
 
 Route::put("httpreq", [HttpController::class,'testRequest']);
+
+Route::view("upload", "upload");
+Route::post("upload", [UploadController::class,'uploadFile']);
+
+Route::get("list", [ListController::class, 'index']);
+
+Route::view("add", "addMember");
+Route::post("add", [ListController::class, 'addData']);
+
+
+Route::get("delete/{id}", [ListController::class, 'deleteData']);
