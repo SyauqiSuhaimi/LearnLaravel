@@ -60,3 +60,8 @@ Route::post("add", [ListController::class, 'addData']);
 
 
 Route::get("delete/{id}", [ListController::class, 'deleteData']);
+
+Route::get("edit/{id}", [ListController::class, 'editData']);
+Route::post("update", [ListController::class, 'updateData']);
+
+Route::get("operate", [ListController::class, 'operation']);

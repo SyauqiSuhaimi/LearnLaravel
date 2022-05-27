@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Member;
 
+use Illuminate\Support\Facades\DB;
+
 class ListController extends Controller
 {
     //
@@ -32,5 +34,33 @@ class ListController extends Controller
         $data = Member::find($id);
         $data -> delete();
         return redirect('list');
+    }
+
+    function editData($id)
+    {
+        $data = Member::find($id);
+        return view('updateMember', ['data' => $data]);
+    }
+
+    function updateData(Request $req)
+    {
+        // $data = Member::find($req -> id);
+        // $data -> userId = $req -> id;
+        // $data -> userName = $req -> username;
+        // $data -> usermail = $req -> email;
+        // $data -> userpass = $req -> password;
+
+        $data = Member::find($req -> userId);
+        $data -> id = $req -> userId;
+        $data -> username = $req -> userName;
+        $data -> email = $req -> usermail;
+        $data -> password = $req -> userpass;
+        $data -> save();
+        return redirect('list');
+    }
+
+    function operation()
+    {
+        echo "operation";
     }
 }
